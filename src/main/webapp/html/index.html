@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<script src="/html/js/jquery-3.2.1.js"></script>
+<script src="/html/js/ajaxfileupload.js"></script>
+<body>
+hi,我是html下的首页。
+<input type="file" name="uploadFile" id="uploadFile" onchange="uploadFile(event)"/>
+
+</body>
+<script>
+    function uploadFile(e){
+        jQuery.ajaxFileUpload({
+            url: 'http://localhost:8080/function/upload/uploadFile',
+            secureuri: false,
+            fileElementId: 'uploadFile',
+            dataType : "json",    //"text/javascript"
+            success: function (data) {
+                var dd= JSON.stringify(data);
+                console.log(dd);
+
+            },
+            error: function (data, xhr,status, e ){
+                alert("上传图片失败");
+            }
+
+        });
+    }
+</script>
+</html>
